@@ -27,9 +27,9 @@ const sizeClass = {
 
 return (
 <button onClick={prop.onClick} className={`flex items-center gap-2 rounded-md transition ${variantClass[prop.variant]} ${sizeClass[prop.size]}`}>
-{prop.startIcon && <span>{prop.startIcon}</span>}
-{prop.text && <span>{prop.text}</span>} 
-{prop.endIcon && <span>{prop.endIcon}</span>}
+{prop.startIcon ? <div className="pr-2">{prop.startIcon}</div> : null}
+{prop.text ? <div>{prop.text}</div> : null} 
+{prop.endIcon? <div className="pl-2">{prop.endIcon}</div> : null}
 </button>
 );
 };

@@ -1,7 +1,7 @@
-import { FcAddImage } from 'react-icons/fc'
 import './App.css'
 import { Button } from './components/ui/Button'
 import { useState } from 'react'
+import { PlusIcon } from './Icons/PlusIcon'
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
         {count}
       </h1>
       <div className='flex justify-center gap-2'>
-        <Button onClick={()=>{setCount(count+1)}} variant='primary' size='sm' text='Count' startIcon={<FcAddImage size={30}/>}/>
+        <Button onClick={()=>{setCount(count+1)}} variant='primary' size='md' text='Count' startIcon={<PlusIcon size='sm'/>}/>
       </div>
     </div>
     </>
