@@ -14,7 +14,7 @@ function App() {
         {count}
       </h1>
       <div className='flex justify-center gap-2'>
-        <Button onClick={()=>{setCount(count+1)}} variant='primary' size='md' text='Count' startIcon={<PlusIcon size='sm'/>}/>
+        <Button onClick={()=>{setCount(count+1)}} variant='primary' size='md' text='Count' startIcon={<PlusIcon size='md'/>}/>
       </div>
     </div>
     </>
