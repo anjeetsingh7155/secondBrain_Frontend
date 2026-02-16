@@ -1,7 +1,7 @@
 import './App.css'
 import { Button } from './components/ui/Button'
 import { useState } from 'react'
-import { PlusIcon } from './Icons/PlusIcon'
+import { PlusIcon } from './components/Icons/PlusIcon'
 
 function App() {
 
