@@ -22,7 +22,7 @@ const [ModelOpen ,SetModelOpen] = useState(false)
 
     <div  className='p-6 flex  gap-2 '>
      <Card title='Naukri' type='twitter' link='https://x.com/ANJEETSING2025/status/1966013982625481157?ref_src=twsrc%5Etfw%22%3ESeptember'/>
-      <Card title='Ikkis Song' type='youtube' link='https://www.youtube.com/watch?v=zQ3zAbteaRo'/>  
+      <Card title='Ikkis Song' type='youtube' link='https://www.youtube.com/watch?v=oafxkMv4xnc'/>  
     </div>
     </div>
   )

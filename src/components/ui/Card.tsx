@@ -1,5 +1,5 @@
 import { Documentation } from "../Icons/DocumentIcon";
-import { PlusIcon } from "../Icons/PlusIcon";
+import { EditIcon } from "../Icons/EditIcon";
 import { ShareIcon } from "../Icons/ShareIcon";
 
 interface CardProps {
@@ -19,7 +19,7 @@ export const Card = (prop: CardProps) => {
         </div>
         <div className="flex text-gray-400">
           <span className="pr-2">
-            <PlusIcon size="sm" />
+            <EditIcon size="sm" />
           </span>
           <a href={prop.link} target="_blank">
             <ShareIcon size="sm" />
