@@ -1,4 +1,3 @@
-import '../App.css'
 import { Button } from '../components/ui/Button'
 import { PlusIcon } from '../components/Icons/PlusIcon'
 import { Card } from '../components/ui/Card'
