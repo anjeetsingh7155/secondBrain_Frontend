@@ -1,13 +1,20 @@
-import React from "react";
+import  { forwardRef } from "react";
 
 interface InputProps {
-    ref? : React.Ref<HTMLInputElement>;
     placeholder: string;
 }
-export function Input({ ref, placeholder }: InputProps) {
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ placeholder }, ref) => {
     return (
-        <div className="">
-            <input type="text" placeholder={placeholder} ref={ref} className="px-4 py-2 border rounded-md m-2" />
-        </div>
+      <div>
+        <input
+          type="text"
+          placeholder={placeholder}
+          ref={ref}
+          className="px-4 py-2 border rounded-md m-2"
+        />
+      </div>
     );
-}
+  }
+);
