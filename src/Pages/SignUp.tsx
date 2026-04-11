@@ -2,18 +2,24 @@ import { useRef } from "react";
 import { PlusIcon } from "../components/Icons/PlusIcon";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
+import axios from "axios";
+import { Backend_Url } from "../config";
 
 export const SignUp = () => {
   const UsernameRef = useRef<HTMLInputElement>(null);
   const EmailRef = useRef<HTMLInputElement>(null);
   const PasswordRef = useRef<HTMLInputElement>(null);
 
-  function signup() {
+  async function signup() {
     const Username = UsernameRef.current?.value;
     const Email = EmailRef.current?.value;
     const Password = PasswordRef.current?.value;
-
-    console.log(Username, Email, Password);
+    await axios.post(`${Backend_Url}/api/v1/signup`, {
+        userName: Username,
+        email: Email,
+        password: Password,
+    });
+    alert('You have Signed Up')
   }
 
   return (

@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 node_modules
 package-lock.json
+
+#make file in src folder for storing database url with the : export const Backend_Url = `backend url`
+config.tsx
