@@ -18,7 +18,6 @@ Second Brain is a React-based frontend application that helps users store, organ
 
 ## 🛠️ Tech Stack
 
-
 - React (TypeScript)
 - Tailwind CSS
 - Axios
