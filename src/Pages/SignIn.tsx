@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+
   const UsernameRef = useRef<HTMLInputElement>(null);
   const EmailRef = useRef<HTMLInputElement>(null);
   const PasswordRef = useRef<HTMLInputElement>(null);
@@ -50,7 +51,6 @@ export const SignIn = () => {
 
   return (
     <div className="h-screen w-screen bg-linear-to-br from-gray-100 to-gray-300 flex justify-center items-center">
-      
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-87.5">
       
         <div className="mb-6 text-center">

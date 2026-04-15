@@ -6,43 +6,82 @@ interface CardProps {
   title: string;
   type: "twitter" | "youtube";
   link: string;
+  tags: string[]; 
+  onDelete?: () => void;
 }
-export const Card = (prop: CardProps) => {
+
+export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
+
+  function getYoutubeEmbedLink(url: string) {
+    return url
+      .replace("watch?v=", "embed/")
+      .replace("&", "?");
+  }
+
   return (
-    <div className="bg-white max-w-72 max-h-96 border border-slate-100 rounded-md shadow-md p-6 overflow-y-scroll overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      <div className="flex justify-between">
-        <div className="flex">
-          <span className="pr-2 text-gray-600">
-            <Documentation size="sm" />
-          </span>
-          {prop.title}
+    <div className="bg-white w-72 border border-slate-100 rounded-xl shadow-md p-4 flex flex-col gap-3">
+
+  
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2 text-gray-700 font-medium">
+          <Documentation size="sm" />
+          {title}
         </div>
-        <div className="flex text-gray-400">
-          <span className="pr-2">
+
+        <div className="flex items-center gap-3 text-gray-400">
+          <span className="cursor-pointer hover:text-gray-600">
             <EditIcon size="sm" />
           </span>
-          <a href={prop.link} target="_blank">
+
+          <a href={link} target="_blank">
             <ShareIcon size="sm" />
           </a>
+
+          {onDelete && (
+            <span
+              onClick={onDelete}
+              className="cursor-pointer text-red-500"
+            >
+              ❌
+            </span>
+          )}
         </div>
       </div>
-      {prop.type === "youtube" && (
+
+      {type === "youtube" && (
         <iframe
-          className="w-2/2 mt-7 rounded-lg"
-          src={prop.link.replace("watch", "embed").replace("?v=","/").replace("?si=","/")}
+          className="w-full h-48 rounded-lg"
+          src={getYoutubeEmbedLink(link)}
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
-        ></iframe>
+        />
       )}
 
-      {prop.type === "twitter" && (
-        <blockquote className="twitter-tweet max-w-full! w-full! mr-3">
-          <a href={prop.link.replace("x.com" , "twitter.com")}></a>
-        </blockquote>
+      {type === "twitter" && (
+        <div className="text-sm text-gray-500 wrap-break-word">
+          <a
+            href={link.replace("x.com", "twitter.com")}
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            View Tweet
+          </a>
+        </div>
       )}
+
+    
+      <div className="flex flex-wrap gap-2 mt-2">
+        {tags.map((tag, index) => (
+          <span
+            key={index}
+            className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs"
+          >
+            #{tag}
+          </span>
+        ))}
+      </div>
+
     </div>
   );
 };
