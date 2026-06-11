@@ -1,17 +1,23 @@
 import { Documentation } from "../Icons/DocumentIcon";
 import { EditIcon } from "../Icons/EditIcon";
 import { ShareIcon } from "../Icons/ShareIcon";
+import TwitterEmbed from "./TwitterEmbed";
 
 interface CardProps {
   title: string;
   type: "twitter" | "youtube";
   link: string;
-  tags: string[]; 
+  tags: string[];
   onDelete?: () => void;
 }
 
-export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
-
+export const Card = ({
+  title,
+  type,
+  link,
+  tags,
+  onDelete,
+}: CardProps) => {
   function getYoutubeEmbedLink(url: string) {
     return url
       .replace("watch?v=", "embed/")
@@ -19,13 +25,13 @@ export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
   }
 
   return (
-    <div className="bg-white w-72 border border-slate-100 rounded-xl shadow-md p-4 flex flex-col gap-3">
+    <div className="bg-white w-80 border border-slate-100 rounded-xl shadow-md p-4 flex flex-col gap-3">
 
-  
+      {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2 text-gray-700 font-medium">
           <Documentation size="sm" />
-          {title}
+          <span>{title}</span>
         </div>
 
         <div className="flex items-center gap-3 text-gray-400">
@@ -33,7 +39,11 @@ export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
             <EditIcon size="sm" />
           </span>
 
-          <a href={link} target="_blank">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ShareIcon size="sm" />
           </a>
 
@@ -48,6 +58,7 @@ export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
         </div>
       </div>
 
+      {/* Youtube */}
       {type === "youtube" && (
         <iframe
           className="w-full h-48 rounded-lg"
@@ -58,19 +69,14 @@ export const Card = ({ title, type, link, tags, onDelete }: CardProps) => {
         />
       )}
 
+      {/* Twitter */}
       {type === "twitter" && (
-        <div className="text-sm text-gray-500 wrap-break-word">
-          <a
-            href={link.replace("x.com", "twitter.com")}
-            target="_blank"
-            className="text-blue-500 underline"
-          >
-            View Tweet
-          </a>
+        <div className="max-w-full overflow-hidden">
+          <TwitterEmbed url={link} />
         </div>
       )}
 
-    
+      {/* Tags */}
       <div className="flex flex-wrap gap-2 mt-2">
         {tags.map((tag, index) => (
           <span
