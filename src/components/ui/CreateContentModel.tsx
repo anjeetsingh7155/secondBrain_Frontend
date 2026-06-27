@@ -186,7 +186,7 @@ export const CreateContentModel = ({ open, onClose, onSubmit }: ContentModelInte
         <div className="mt-2">
           <button
             onClick={handleSubmit}
-            className="w-full bg-gradient-to-r from-indigo-650 to-violet-650 hover:from-indigo-750 hover:to-violet-750 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-indigo-600/20 active:scale-98 hover:scale-101 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
+            className="w-full bg-linear-to-r from-indigo-650 to-violet-650 hover:from-indigo-750 hover:to-violet-750 text-blue-500 font-bold py-3 px-4 rounded-xl shadow-lg shadow-indigo-600/20 active:scale-98 hover:scale-101 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
           >
             <FaPlusCircle className="size-4" />
             <span>Add Content</span>
