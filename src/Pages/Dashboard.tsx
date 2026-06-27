@@ -17,8 +17,11 @@ interface ContentType {
   tags: string[];
 }
 
+import { FaBars } from 'react-icons/fa'
+
 export const DashBoard = () => {
   const [ModelOpen, SetModelOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [contents, setContents] = useState<ContentType[]>([]);
   const navigate = useNavigate();
 
@@ -119,10 +122,21 @@ export const DashBoard = () => {
   }
 
   return (
-    <div>
-      <SideBar />
+    <div className="min-h-screen bg-blue-50 dark:bg-slate-950 transition-colors">
+      {/* Mobile Top Bar */}
+      <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 md:hidden sticky top-0 z-20 transition-colors shadow-sm">
+        <span className="font-bold text-gray-800 dark:text-slate-100 tracking-tight">Second Brain</span>
+        <button 
+          onClick={() => setSidebarOpen(true)}
+          className="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer"
+        >
+          <FaBars className="size-5" />
+        </button>
+      </div>
 
-      <div className='p-4 ml-72 bg-blue-50 dark:bg-slate-950 min-h-screen transition-colors text-gray-900 dark:text-slate-100'>
+      <SideBar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+      <div className='p-4 ml-0 md:ml-72 min-h-screen text-gray-900 dark:text-slate-105'>
         
   
         <CreateContentModel
