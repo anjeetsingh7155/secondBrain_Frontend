@@ -29,9 +29,17 @@ export const SharedBrain = () => {
         const res = await axios.get(`${Backend_Url}/api/v1/brain/${shareId}`);
         setUsername(res.data.username);
         setContents(res.data.content);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error(err);
-        setError(err?.response?.data?.message || "Failed to load shared brain");
+        let message = "Failed to load shared brain";
+
+        if (axios.isAxiosError(err)) {
+          message = err.response?.data?.message || err.message || message;
+        } else if (err instanceof Error) {
+          message = err.message;
+        }
+
+        setError(message);
       } finally {
         setLoading(false);
       }
