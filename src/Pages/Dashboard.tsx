@@ -7,22 +7,29 @@ import { useEffect, useState } from 'react'
 import { SideBar } from '../components/ui/SideBar'
 import axios from 'axios'
 import { Backend_Url } from '../config'
+import { useNavigate } from 'react-router-dom'
 
 interface ContentType {
   id: string;
   title: string;
   link: string;
-  type: "youtube" | "twitter";
+  type: "youtube" | "twitter" | "instagram" | "facebook" | "reddit";
   tags: string[];
 }
 
 export const DashBoard = () => {
   const [ModelOpen, SetModelOpen] = useState(false);
   const [contents, setContents] = useState<ContentType[]>([]);
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("authorization");
 
   useEffect(() => {
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
     async function loadData() {
       try {
         const res = await axios.get(`${Backend_Url}/api/v1/content`, {
@@ -38,7 +45,7 @@ export const DashBoard = () => {
     }
 
     loadData();
-  }, [token]);
+  }, [token, navigate]);
 
   async function deleteContent(id: string) {
     try {
@@ -100,7 +107,9 @@ export const DashBoard = () => {
         }
       );
 
-      const fullLink = `${window.location.origin}${res.data.link}`;
+      // Backend returns e.g. "/api/v1/brain/abc123xyz"
+      const shareToken = res.data.link.split("/").pop();
+      const fullLink = `${window.location.origin}/share/${shareToken}`;
 
       navigator.clipboard.writeText(fullLink);
       alert("Link copied!");

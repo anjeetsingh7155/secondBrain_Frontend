@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
 
-  const UsernameRef = useRef<HTMLInputElement>(null);
-  const EmailRef = useRef<HTMLInputElement>(null);
+  const IdentifierRef = useRef<HTMLInputElement>(null);
   const PasswordRef = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState("");
@@ -18,13 +17,11 @@ export const SignIn = () => {
     try {
       setError("");
 
-      const Username = UsernameRef.current?.value;
-      const Email = EmailRef.current?.value;
+      const usernameOrEmail = IdentifierRef.current?.value;
       const Password = PasswordRef.current?.value;
 
       const response = await axios.post(`${Backend_Url}/api/v1/login`, {
-        userName: Username,
-        email: Email,
+        usernameOrEmail: usernameOrEmail,
         password: Password,
       });
 
@@ -67,9 +64,8 @@ export const SignIn = () => {
         )}
 
         <div className="flex flex-col gap-4">
-          <Input placeholder="Username" ref={UsernameRef} />
-          <Input placeholder="Email" ref={EmailRef} />
-          <Input placeholder="Password" ref={PasswordRef} />
+          <Input placeholder="Username or Email" ref={IdentifierRef} />
+          <Input placeholder="Password" type="password" ref={PasswordRef} />
         </div>
 
         <div className="text-right mt-2">

@@ -66,15 +66,17 @@ export const SignUp = () => {
         <div className="flex flex-col gap-4">
           <Input ref={UsernameRef} placeholder="Username" />
           <Input ref={EmailRef} placeholder="Email" />
-          <Input ref={PasswordRef} placeholder="Password" />
+          <Input ref={PasswordRef} type="password" placeholder="Password" />
         </div>
-<p className="text-clip text-sm text-gray-500 mt-2">
-  Password Must Contain : 
-  <ul><li>Size : 6-12 Letters</li>
-  <li> Alphabet : 1 upper Case , 1 lower Case</li>
-  <li> Number : Ateleast 1 Numeric Letter</li>
-  <li>No Special Characters allowed</li></ul>
-</p>
+        <p className="text-clip text-sm text-gray-500 mt-2">
+          Password Must Contain : 
+          <ul className="list-disc pl-5 mt-1">
+            <li>Size : 6-12 Letters</li>
+            <li>Alphabet : 1 upper Case, 1 lower Case</li>
+            <li>Number : At least 1 Numeric Letter</li>
+            <li>No Special Characters allowed</li>
+          </ul>
+        </p>
         <div className="mt-6">
           <Button
             variant="primary"

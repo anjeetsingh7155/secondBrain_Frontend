@@ -1,1 +1,1 @@
-export const Backend_Url = `https://second-brain-wkju.vercel.app`
+export const Backend_Url = import.meta.env.VITE_BACKEND_URL || `https://second-brain-wkju.vercel.app`

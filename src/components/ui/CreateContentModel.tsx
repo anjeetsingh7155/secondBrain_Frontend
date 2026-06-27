@@ -57,6 +57,9 @@ export const CreateContentModel = ({ open, onClose, onSubmit }: ContentModelInte
         <select ref={typeRef} className="p-2 border rounded-md">
           <option value="youtube">YouTube</option>
           <option value="twitter">Twitter</option>
+          <option value="instagram">Instagram</option>
+          <option value="facebook">Facebook</option>
+          <option value="reddit">Reddit</option>
         </select>
 
         <div className="flex gap-2">
