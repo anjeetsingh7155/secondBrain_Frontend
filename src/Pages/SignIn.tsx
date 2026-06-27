@@ -5,6 +5,8 @@ import { Backend_Url } from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { ThemeToggle } from "../components/ui/ThemeToggle";
+
 export const SignIn = () => {
 
   const IdentifierRef = useRef<HTMLInputElement>(null);
@@ -47,12 +49,13 @@ export const SignIn = () => {
   }
 
   return (
-    <div className="h-screen w-screen bg-linear-to-br from-gray-100 to-gray-300 flex justify-center items-center">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-87.5">
+    <div className="h-screen w-screen bg-linear-to-br from-gray-100 to-gray-300 dark:from-slate-950 dark:to-slate-900 flex justify-center items-center transition-colors">
+      <ThemeToggle floating />
+      <div className="bg-white dark:bg-slate-900 border dark:border-slate-800 shadow-2xl rounded-2xl p-8 w-87.5 transition-colors">
       
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-slate-100">Welcome Back</h1>
+          <p className="text-gray-500 dark:text-slate-400 text-sm mt-1">
             Login to continue 🚀
           </p>
         </div>

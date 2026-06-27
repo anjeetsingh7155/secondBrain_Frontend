@@ -6,6 +6,8 @@ import axios from "axios";
 import { Backend_Url } from "../config";
 import { useNavigate } from "react-router-dom";
 
+import { ThemeToggle } from "../components/ui/ThemeToggle";
+
 export const SignUp = () => {
     const UsernameRef = useRef<HTMLInputElement>(null);
   const EmailRef = useRef<HTMLInputElement>(null);
@@ -35,7 +37,7 @@ export const SignUp = () => {
   if (axios.isAxiosError(err)) {
     if (err.response?.status === 409) {
       setError("This person already exists, please login");
-    } else if (err.response?.status === 403) {
+    } else if (err.response?.status === 403 || err.response?.status === 400) {
       setError("Invalid input data");
     } else {
       setError("Something went wrong");
@@ -46,12 +48,13 @@ export const SignUp = () => {
 }
   }
     return (
-    <div className="h-screen w-screen bg-linear-to-br from-gray-100 to-gray-300 flex justify-center items-center">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-87.5">
+    <div className="h-screen w-screen bg-linear-to-br from-gray-100 to-gray-300 dark:from-slate-950 dark:to-slate-900 flex justify-center items-center transition-colors">
+      <ThemeToggle floating />
+      <div className="bg-white dark:bg-slate-900 border dark:border-slate-800 shadow-2xl rounded-2xl p-8 w-87.5 transition-colors">
         
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-800">Create Account</h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-slate-100">Create Account</h1>
+          <p className="text-gray-500 dark:text-slate-400 text-sm mt-1">
             Join us and start your journey 🚀
           </p>
         </div>

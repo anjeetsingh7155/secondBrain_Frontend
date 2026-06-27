@@ -51,11 +51,11 @@ export const Card = ({
   }
 
   return (
-    <div className="bg-white w-80 border border-slate-100 rounded-xl shadow-md p-4 flex flex-col gap-3">
+    <div className="bg-white dark:bg-slate-900 w-80 border border-slate-100 dark:border-slate-800 rounded-xl shadow-md p-4 flex flex-col gap-3 transition-colors">
 
       {/* Header */}
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2 text-gray-700 font-medium">
+        <div className="flex items-center gap-2 text-gray-700 dark:text-slate-200 font-medium">
           {getPlatformIcon(type)}
           <span className="truncate max-w-44">{title}</span>
         </div>
@@ -108,7 +108,7 @@ export const Card = ({
         {type === "instagram" && (
           getInstagramEmbedLink(link) ? (
             <iframe
-              className="w-full h-80 rounded-lg border"
+              className="w-full h-80 rounded-lg border dark:border-slate-800"
               src={getInstagramEmbedLink(link)}
               title="Instagram embed"
               frameBorder="0"
@@ -116,9 +116,9 @@ export const Card = ({
               allowTransparency
             />
           ) : (
-            <div className="bg-gradient-to-tr from-yellow-100 via-pink-100 to-purple-100 p-4 rounded-lg text-center flex flex-col gap-2 items-center">
+            <div className="bg-gradient-to-tr from-yellow-100 via-pink-100 to-purple-100 dark:from-yellow-950/20 dark:via-pink-950/20 dark:to-purple-950/20 p-4 rounded-lg text-center flex flex-col gap-2 items-center transition-colors">
               <FaInstagram className="text-pink-600 size-8 animate-pulse" />
-              <span className="text-xs font-semibold text-gray-700">Instagram Content</span>
+              <span className="text-xs font-semibold text-gray-700 dark:text-slate-300">Instagram Content</span>
               <a href={link} target="_blank" rel="noopener noreferrer" className="bg-pink-600 hover:bg-pink-700 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-colors">
                 View Post
               </a>
@@ -128,9 +128,9 @@ export const Card = ({
 
         {/* Facebook */}
         {type === "facebook" && (
-          <div className="bg-blue-50 p-4 rounded-lg text-center flex flex-col gap-2 items-center">
+          <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg text-center flex flex-col gap-2 items-center transition-colors">
             <FaFacebook className="text-blue-700 size-8" />
-            <span className="text-xs font-semibold text-gray-700">Facebook Content</span>
+            <span className="text-xs font-semibold text-gray-700 dark:text-slate-300">Facebook Content</span>
             <a href={link} target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-colors">
               View Post
             </a>
@@ -139,9 +139,9 @@ export const Card = ({
 
         {/* Reddit */}
         {type === "reddit" && (
-          <div className="bg-orange-50 p-4 rounded-lg text-center flex flex-col gap-2 items-center">
+          <div className="bg-orange-50 dark:bg-orange-950/20 p-4 rounded-lg text-center flex flex-col gap-2 items-center transition-colors">
             <FaReddit className="text-orange-600 size-8" />
-            <span className="text-xs font-semibold text-gray-700">Reddit Content</span>
+            <span className="text-xs font-semibold text-gray-700 dark:text-slate-300">Reddit Content</span>
             <a href={link} target="_blank" rel="noopener noreferrer" className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-colors">
               View Post
             </a>
@@ -154,7 +154,7 @@ export const Card = ({
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs"
+            className="bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full text-xs transition-colors"
           >
             #{tag}
           </span>

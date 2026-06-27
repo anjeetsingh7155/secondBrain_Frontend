@@ -122,7 +122,7 @@ export const DashBoard = () => {
     <div>
       <SideBar />
 
-      <div className='p-4 ml-72 bg-blue-50 min-h-screen'>
+      <div className='p-4 ml-72 bg-blue-50 dark:bg-slate-950 min-h-screen transition-colors text-gray-900 dark:text-slate-100'>
         
   
         <CreateContentModel

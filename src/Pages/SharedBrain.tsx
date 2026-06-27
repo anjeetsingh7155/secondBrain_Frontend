@@ -4,6 +4,7 @@ import axios from "axios";
 import { Card } from "../components/ui/Card";
 import { Backend_Url } from "../config";
 import { BrainIcon } from "../components/Icons/BrainIcon";
+import { ThemeToggle } from "../components/ui/ThemeToggle";
 
 interface SharedContentType {
   id: string;
@@ -51,20 +52,21 @@ export const SharedBrain = () => {
   }, [shareId]);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col text-gray-900 dark:text-slate-100 transition-colors">
+      <ThemeToggle floating />
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 px-6 py-4 shadow-sm flex items-center justify-between sticky top-0 z-10">
+      <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 shadow-sm flex items-center justify-between sticky top-0 z-10 transition-colors">
         <div className="flex items-center gap-3">
-          <div className="text-indigo-600">
+          <div className="text-indigo-600 dark:text-indigo-400">
             <BrainIcon size="md" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-800">Second Brain</h1>
-            <p className="text-xs text-gray-500">Shared content showcase</p>
+            <h1 className="text-xl font-bold text-gray-800 dark:text-slate-100">Second Brain</h1>
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Shared content showcase</p>
           </div>
         </div>
 
-        <div>
+        <div className="mr-14">
           <button
             onClick={() => navigate("/signin")}
             className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer"
@@ -79,16 +81,16 @@ export const SharedBrain = () => {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-gray-500 font-medium text-sm">Fetching shared mind space...</p>
+            <p className="text-gray-500 dark:text-slate-400 font-medium text-sm">Fetching shared mind space...</p>
           </div>
         ) : error ? (
-          <div className="max-w-md mx-auto bg-white border border-red-100 shadow-md rounded-2xl p-8 text-center mt-12">
+          <div className="max-w-md mx-auto bg-white dark:bg-slate-900 border border-red-100 dark:border-red-950/40 shadow-md rounded-2xl p-8 text-center mt-12 transition-colors">
             <div className="text-red-500 text-5xl mb-4">⚠️</div>
-            <h2 className="text-lg font-bold text-gray-800 mb-2">Failed to View Brain</h2>
-            <p className="text-gray-500 text-sm mb-6">{error}</p>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-slate-100 mb-2">Failed to View Brain</h2>
+            <p className="text-gray-500 dark:text-slate-400 text-sm mb-6">{error}</p>
             <button
               onClick={() => navigate("/")}
-              className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
+              className="bg-gray-800 hover:bg-gray-900 dark:bg-slate-800 dark:hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
             >
               Go to Homepage
             </button>
@@ -113,9 +115,9 @@ export const SharedBrain = () => {
 
             {/* Grid display */}
             {contents.length === 0 ? (
-              <div className="text-center py-16 bg-white border border-slate-100 rounded-2xl shadow-sm">
-                <p className="text-gray-400 text-lg mb-2 font-medium">This brain is empty</p>
-                <p className="text-gray-400 text-sm">Owner hasn't added any public items yet.</p>
+              <div className="text-center py-16 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm transition-colors">
+                <p className="text-gray-400 dark:text-slate-400 text-lg mb-2 font-medium">This brain is empty</p>
+                <p className="text-gray-500 dark:text-slate-500 text-sm">Owner hasn't added any public items yet.</p>
               </div>
             ) : (
               <div className="flex gap-6 flex-wrap justify-start items-stretch">
